@@ -99,6 +99,11 @@ a {
     margin: auto;
   }
 }
+.header .container .main-nav > li:hover .mega-menu {
+opacity: 1;
+z-index: 1;
+top: 100%;
+}
 .header .container .main-nav > li {
 }
 .header .container .main-nav > li > a {
@@ -143,8 +148,82 @@ a {
 .header .container .main-nav > li > a:hover::before {
   left: 0;
 }
-.header .mega-menu{
-    
+.header .mega-menu {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  padding: 20px;
+  background-color: white;
+  border-bottom: 3px solid var(--main-color);
+  box-shadow: 0px 5px 10px 0 #66666669 ;
+  z-index: 100;
+  display: flex;
+  gap: 40px;
+
+  z-index: -1;
+  opacity: 0;
+
+
+
+  top: calc(100% + 50px);
+  transition: top var(--main-transition), opacity var(--main-transition);
+}
+@media (max-width: 767px) {
+  .header .mega-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
+  }
+}
+.header .mega-menu .image img {
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .header .mega-menu .image img {
+    display: none;
+  }
+}
+.header .mega-menu .links {
+  min-width: 250px;
+  flex: 1;
+}
+.header .mega-menu .links li {
+  position: relative;
+}
+.header .mega-menu .links li:not(:last-child) {
+  border-bottom: 1px solid #e9e6e6;
+}
+@media (max-width: 767px) {
+  .header .mega-menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid #e9e6e6;
+  }
+}
+.header .mega-menu .links li::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  transform: skewX(20deg);
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: var(--main-transition);
+  z-index: -1;
+}
+.header .mega-menu .links li:hover::before {
+  width: 100%;
+  left: 0;
+  opacity: 1;
+  transform: skewX(0deg);
+}
+.header .mega-menu .links li a {
+  color: var(--main-color);
+  display: block;
+  padding: 15px;
+  font-style: 18px;
+  font-weight: bold;
+}
+.header .mega-menu .links li a i {
+  margin-right: 10px;
 }
 /* end header */
 /* start landing */
@@ -199,9 +278,8 @@ a {
   }
 }
 @media (max-width: 991px) {
-    .landing .container .text p {
-        margin: 10px 0 0;
-       
+  .landing .container .text p {
+    margin: 10px 0 0;
   }
 }
 .landing .container .image {
@@ -212,23 +290,22 @@ a {
   /* max-width: 100%; */
   position: relative;
   animation: up-and-down 5s linear infinite;
-  
 }
 @media (max-width: 991px) {
-    .landing .container .image img {
-        display: none;
+  .landing .container .image img {
+    display: none;
   }
 }
 .landing .go-down {
-    color: var(--main-color);
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: var(--main-transition);
+  color: var(--main-color);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: var(--main-transition);
 }
 .landing .go-down:hover {
-    color: var(--main-color-alt);
+  color: var(--main-color-alt);
 }
 
 .landing .go-down i {
@@ -254,11 +331,10 @@ a {
   80%,
   100% {
     transform: translateY(0);
-}
-40%,60%{
-      transform: translateY(-15px);
-
-    
+  }
+  40%,
+  60% {
+    transform: translateY(-15px);
   }
 }
 /* end animation */
